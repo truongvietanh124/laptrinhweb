@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="vi"> <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Về Khách sạn của Chúng tôi - Paradise Đà Nẵng</title> {% load static %}
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <link rel="stylesheet" href="{% static 'styles.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+  {% include 'navbar.html' %} <section class="about-section">
+    <div class="about-header">
+      <h1>Về Khách sạn Paradise Đà Nẵng</h1> <p style="font-size: 1.1rem; color: #444;"> Được thành lập vào năm 2025, Khu nghỉ dưỡng Paradise Đà Nẵng đã nhanh chóng trở thành một biểu tượng của lòng hiếu khách tại Đà Nẵng, kết hợp di sản văn hóa phong phú của khu vực với sự sang trọng đương đại.
+      </p>
+    </div>
+
+    <div class="breadcrumb">
+      <span><a href="{% url 'home' %}">Trang chủ</a></span> &gt; <span class="current">Về chúng tôi</span> </div>
+  </section>
+
+  <section class="hotel-description" style="font-family: 'Arial', sans-serif; line-height: 1.6; padding: 2rem; background-color: #f9f9f9;">
+    <div class="container" style="max-width: 800px; margin: 0 auto;">
+      <p style="font-size: 1.2rem; color: #333;">
+        ``Nằm ẩn mình giữa lòng thành phố Đà Nẵng sôi động, khách sạn của chúng tôi là sự hòa quyện giữa nét thanh lịch hiện đại và một chút di sản cổ kính. Từ kiến trúc tinh tế đến lòng hiếu khách nồng hậu của đội ngũ nhân viên, mọi khoảnh khắc tại đây đều được thiết kế để bạn cảm thấy như ở nhà.
+        Với hơn 200 phòng nghỉ và suite sang trọng, đa dạng các nhà hàng ẩm thực cao cấp và các tiện nghi tối tân, chúng tôi hứa hẹn một kỳ nghỉ khó quên. Dù bạn là khách doanh nhân đang tìm kiếm một không gian làm việc hiệu quả hay một gia đình đi nghỉ dưỡng mong muốn sự thư giãn,
+        khách sạn của chúng tôi đều đáp ứng mọi nhu cầu. Hãy tận hưởng các liệu pháp spa đẳng cấp thế giới, trung tâm thể dục đầy đủ trang thiết bị, hồ bơi vô cực và tầm nhìn ngoạn mục ra thành phố hoặc bờ biển. Đội ngũ hỗ trợ tận tâm của chúng tôi luôn sẵn sàng giúp đỡ, đảm bảo trải nghiệm của bạn không gì khác ngoài sự tuyệt vời.``
+      </p>
+    </div>
+  </section>
+
+  <section class="testimonial-section">
+  <div class="container">
+    <div class="testimonial">
+      <div class="testimonial-image">
+        <img src="{% static 'images/j97_profile.jpg' %}" alt="Ảnh của J97 (Jack)"> </div>
+      <div class="testimonial-content">
+        <blockquote>
+          <p>"Tại Khách sạn Paradise Đà Nẵng, mỗi khoảnh khắc đều là một giai điệu tuyệt vời của sự thư giãn và đẳng cấp. Một không gian lý tưởng để tái tạo năng lượng và tìm thấy nguồn cảm hứng mới."</p> </blockquote>
+        <p class="testimonial-author">- J97 (Jack), Nghệ sĩ Hợp tác</p> </div>
+    </div>
+  </div>
+</section>
+
+<section style="text-align: center; padding: 3rem 2rem; background-color: #f0f8ff;">
+  <h2 style="font-size: 2rem; color: #333; margin-bottom: 2.5rem;">Gặp gỡ Đội ngũ của Chúng tôi</h2>
+  <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; max-width: 1200px; margin: 0 auto;">
+
+      <div style="background: #ffffff; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); width: 250px; /* Tăng nhẹ chiều rộng nếu chỉ có một vài thành viên nổi bật */">
+        <img src="{% static 'images/j97_profile.jpg' %}" alt="Ảnh của J97 (Jack)" style="width: 100%; max-width: 160px; /* Tăng kích thước ảnh */ border-radius: 50%; margin-bottom: 15px; object-fit: cover; height: 160px;">
+        <h3 style="color: #333; font-size: 1.25rem; /* Tăng cỡ chữ tên */ margin-bottom: 8px;">J97 (Jack)</h3>
+        <p style="color: #555; font-size: 1rem; /* Tăng cỡ chữ chức danh */">Nghệ sĩ Hợp tác</p> </div>
+
+      </div>
+</section>
+
+
+  <section class="services-section">
+    <h2>Chúng tôi Cung cấp Những gì</h2> <div class="grid-container">
+      <div class="grid-item">
+        <img src="{% static 'images/f-1.png' %}" alt="Đưa đón sân bay"> <h3>Đưa đón sân bay</h3> </div>
+      <div class="grid-item">
+        <img src="{% static 'images/f-2.png' %}" alt="Trọn gói"> <h3>Trọn gói</h3> </div>
+      <div class="grid-item">
+        <img src="{% static 'images/f-3.png' %}" alt="Có điều hòa"> <h3>Có điều hòa</h3> </div>
+      <div class="grid-item">
+        <img src="{% static 'images/f-4.png' %}" alt="An ninh đảm bảo"> <h3>An ninh đảm bảo</h3> </div>
+    </div>
+  </section>
+
+  <section class="testimonials-section">
+    <h2>Khách hàng Nói gì về Chúng tôi</h2> <div class="container">
+      <div class="testimonial">
+        <div class="profile">
+          <img src="{% static 'images/faces-1-140x140.jpg' %}" alt="Ảnh của Vicky Mahajan"> <h3>Vicky Mahajan</h3> <p>Từ Ấn Độ</p> </div>
+        <div class="testimonial-content">
+          <p>"Một kỳ nghỉ tuyệt vời! Lòng hiếu khách thật xuất sắc, và các tiện nghi thì đỉnh cao."</p> </div>
+      </div>
+      <div class="testimonial">
+        <div class="profile">
+          <img src="{% static 'images/faces-2-140x140.jpg' %}" alt="Ảnh của Emma Trueman"> <h3>Emma Trueman</h3> <p>Từ Đức</p> </div>
+        <div class="testimonial-content">
+          <p>"Các phòng rất rộng rãi và sang trọng. Tôi chắc chắn sẽ quay lại lần nữa!"</p> </div>
+      </div>
+    </div>
+  </section>
+
+  {% include 'footer.html' %} </body>
+</html>

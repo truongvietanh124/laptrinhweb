@@ -1,0 +1,48 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'footer.css' %}">
+<footer class="footer" style="background-color: #1a1a2e; color: white;">
+    <div class="footer-container">
+        <div class="footer-brand">
+            <h2 style="color: white;">Khách sạn Paradise</h2> <p style="color: white;">Nơi sự sang trọng gặp gỡ truyền thống giữa lòng Đà Nẵng. Kết nối với chúng tôi trên mạng xã hội để cập nhật những thông tin mới nhất và ưu đãi độc quyền...</p> <div class="social-icons">
+                <a href="#"><i class="fas fa-times" style="color: white;"></i></a> <a href="#"><i class="fab fa-facebook-f" style="color: white;"></i></a>
+                <a href="#"><i class="fab fa-youtube-square" style="color: white;"></i></a>
+                <a href="#"><i class="fab fa-instagram" style="color: white;"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in" style="color: white;"></i></a>
+            </div>
+            <div style="margin-top: 20px;">
+                <h5 style="color: white; text-align: center;">© 2025 Khách sạn Paradise</h5>
+            </div>
+        </div>
+        <div class="footer-menu" style="padding-left: 20px;">
+            <h3 style="color: white;">Danh mục</h3>
+            <ul>
+                <li><a href="{% url 'home' %}" style="color: white;">Trang chủ</a></li>
+                <li><a href="{% url 'rooms:room_list' %}" style="color: white;">Phòng nghỉ</a></li>
+                <li><a href="{% url 'blog:blog_list' %}" style="color: white;">Bài viết</a></li> <li><a href="{% url 'feedback:feedback_list' %}" style="color: white;">Phản hồi</a></li>
+                <li><a href="{% url 'about' %}" style="color: white;">Về chúng tôi</a></li>
+                <li><a href="{% url 'contact:contact_us' %}" style="color: white;">Liên hệ</a></li>
+            </ul>
+        </div>
+        <div class="footer-meet">
+            <h3 style="color: white;">Khám phá Paradise</h3> <ul>
+                <li><a href="#" style="color: white;">Câu hỏi thường gặp (FAQ)</a></li>
+                <li><a href="#" style="color: white;">Thư viện ảnh</a></li>
+                <li><a href="#" style="color: white;">Thực đơn</a></li> </ul>
+        </div>
+        <div class="footer-instagram">
+            <h3 style="color: white;">Instagram</h3>
+            <div class="instagram-gallery">
+                <img src="{% static 'images/about-1-140x140.jpg' %}" alt="Ảnh Instagram 1">
+                <img src="{% static 'images/about-2-140x140.jpg' %}" alt="Ảnh Instagram 2">
+                <img src="{% static 'images/about-3-140x140.jpg' %}" alt="Ảnh Instagram 3">
+                <img src="{% static 'images/about-4-140x140.jpg' %}" alt="Ảnh Instagram 4">
+                <img src="{% static 'images/about-5-140x140.jpg' %}" alt="Ảnh Instagram 5">
+                <img src="{% static 'images/about-6-140x140.jpg' %}" alt="Ảnh Instagram 6">
+            </div>
+        </div>
+    </div>
+    <div style="background-color: #1a1a2e; color: white; padding: 20px; text-align: center; margin-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+        <p style="margin: 0;">© 2025 Khách sạn Paradise, Đà Nẵng. Bản quyền đã được bảo hộ.</p> <p style="font-size: 14px; margin-top: 10px; color: #ccc;">
+        </p>
+    </div>
+</footer>

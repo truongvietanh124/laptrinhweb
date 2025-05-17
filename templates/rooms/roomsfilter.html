@@ -1,0 +1,179 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="vi"> <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phòng Trống Phù Hợp - Khách sạn Paradise</title> {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Thêm một vài style cơ bản nếu style.css và styles.css không đủ */
+        body {
+            font-family: Arial, sans-serif; /* Đảm bảo font hỗ trợ tiếng Việt */
+            background-color: #f8f9fc;
+            color: #333;
+            line-height: 1.6;
+        }
+        .rooms-section h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        .rooms-section h1 small {
+            display: block; /* Cho small xuống dòng mới */
+            font-size: 0.6em; /* Giảm kích thước chữ */
+            font-weight: normal; /* Bỏ in đậm mặc định của small */
+            margin-top: 10px; /* Thêm khoảng cách */
+        }
+        .breadcrumb {
+            text-align: center;
+            margin-bottom: 40px; /* Tăng khoảng cách dưới */
+            font-size: 0.9rem;
+            color: #777;
+        }
+        .breadcrumb a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .breadcrumb .current {
+            color: #333;
+            font-weight: bold;
+        }
+        .container { /* Style cho grid hiển thị phòng */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .room-card { /* Style cho thẻ phòng */
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .room-card:hover {
+             transform: translateY(-5px);
+             box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+        .room-card a:first-child { /* Link chứa ảnh */
+            display: block;
+            height: 250px;
+            overflow: hidden;
+        }
+        .room-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease; /* Thêm hiệu ứng zoom nhẹ cho ảnh */
+        }
+         .room-card:hover img {
+             transform: scale(1.05);
+         }
+        .room-details {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .room-details .info {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        .room-details .info span {
+            margin-right: 15px;
+            display: inline-block;
+            background-color: #f1f1f1;
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+        .room-details h3 {
+            margin: 0 0 10px;
+            font-size: 1.4rem;
+            line-height: 1.3;
+        }
+        .room-details h3 a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+         .room-details h3 a:hover {
+            color: #007bff;
+        }
+        .room-details > p { /* Mô tả phòng */
+            margin: 0 0 15px;
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+        .room-details .price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+        .room-details .price span {
+            font-size: 1.2rem;
+            color: #c50000;
+            font-weight: bold;
+        }
+        .no-rooms-message { /* Style cho thông báo không có phòng */
+            grid-column: 1 / -1;
+            text-align: center;
+            font-size: 18px;
+            color: #777;
+            padding: 40px 20px;
+         }
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' %} <section class="rooms-section" style="padding-top: 20px;">
+        <h1>Phòng Trống Phù Hợp <br><br>
+            <small style="color: rgb(80, 80, 80);">
+                Từ {{ check_in|date:"d/m/Y" }} ←→ Đến {{ check_out|date:"d/m/Y" }} | {{ adults }} khách
+            </small>
+        </h1>
+        <div class="breadcrumb">
+            <span><a href="{% url 'home' %}">Trang chủ</a></span> > <span class="current">Phòng trống</span> </div>
+    </section>
+
+    <div class="container">
+        {% for room in rooms %}
+        <div class="room-card">
+            <a href="{% url 'rooms:room_detail' room.id %}">
+                {% if room.image %}
+                     <img src="{{ room.image.url }}" alt="{{ room.name }}">
+                {% else %}
+                    <img src="{% static 'images/placeholder.jpg' %}" alt="Không có hình ảnh"> {% endif %}
+            </a>
+            <div class="room-details">
+                <div class="info">
+                    <span>Số khách: {{ room.capacity }}</span> <span>Kích thước: {{ room.get_size_display }}</span> </div>
+                <h3>
+                    <a href="{% url 'rooms:room_detail' room.id %}">{{ room.name }}</a>
+                </h3>
+                <p>
+                    {{ room.description|slice:":100" }}...
+                </p>
+                <div class="price">
+                    <span>₫{{ room.price|floatformat:0 }} / đêm</span>
+                    <a href="{% url 'rooms:room_detail' room.id %}" style="color: #007bff; text-decoration: none; font-weight: bold; font-size: 0.9rem;">Xem chi tiết →</a> </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="no-rooms-message">Không có phòng nào phù hợp với ngày và số lượng khách bạn đã chọn.</p> {% endfor %}
+    </div>
+
+    {% include 'footer.html' %} </body>
+</html>

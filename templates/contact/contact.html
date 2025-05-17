@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="vi"> <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên hệ - Khách sạn Paradise Đà Nẵng</title> {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Một vài gợi ý CSS cơ bản cho trang liên hệ */
+        body {
+            font-family: Arial, sans-serif; /* Đảm bảo font hỗ trợ tiếng Việt */
+            color: #333;
+            line-height: 1.6;
+        }
+        .rooms-section h1, .rooms-section h2 { /* Class 'rooms-section' được dùng hơi nhiều, có thể cần class riêng biệt */
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        .rooms-section > p {
+            text-align: center;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 20px;
+            font-size: 1.1rem; /* Sửa lỗi '1.2 rem' thành '1.1rem' hoặc '1.2rem' */
+            color: #555;
+        }
+        .breadcrumb {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+            color: #777;
+        }
+        .breadcrumb a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .breadcrumb .current {
+            color: #333;
+            font-weight: bold;
+        }
+        .contact-info {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 40px;
+            padding: 0 20px;
+        }
+        .info-box {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            text-align: center;
+            width: 300px; /* Hoặc flex-basis */
+        }
+        .info-box .icon img {
+            width: 50px; /* Điều chỉnh kích thước icon */
+            height: auto;
+            margin-bottom: 15px;
+        }
+        .info-box h3 {
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+            color: #34495e;
+        }
+        .info-box p {
+            font-size: 1rem;
+            color: #555;
+            word-wrap: break-word; /* Để email hoặc địa chỉ dài không bị tràn */
+        }
+        .contact-form-container {
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .contact-form .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        .contact-form .form-row input {
+            flex: 1; /* Để 2 input chiếm không gian bằng nhau */
+        }
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px; /* Thêm margin bottom cho input và textarea */
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 1rem;
+        }
+         .contact-form textarea {
+            min-height: 150px; /* Chiều cao tối thiểu cho textarea */
+        }
+        .contact-form button[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease;
+            display: block; /* Để nút căn giữa dễ hơn nếu cần */
+            margin: 0 auto; /* Căn giữa nút Send */
+        }
+        .contact-form button[type="submit"]:hover {
+            background-color: #218838;
+        }
+        .disclaimer {
+            font-size: 0.85rem;
+            color: #777;
+            text-align: center;
+            margin-top: 15px;
+        }
+        .alert { /* Style cho Django messages */
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .alert-success {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+        .alert-error, .alert-danger { /* Thêm class alert-danger vì Django hay dùng */
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' %} <section class="rooms-section" style="padding-top: 20px;"> <h1>Liên Hệ Với Chúng Tôi</h1> <p>
+            Bạn có câu hỏi hoặc cần hỗ trợ lên kế hoạch cho kỳ nghỉ của mình? Đội ngũ của chúng tôi luôn sẵn sàng giúp đỡ! Hãy liên hệ với chúng tôi qua biểu mẫu dưới đây hoặc gọi điện thoại. Chúng tôi luôn vui mừng được kết nối với những vị khách tương lai và đảm bảo trải nghiệm của bạn sẽ liền mạch và đáng nhớ.
+        </p> <div class="breadcrumb">
+            <span><a href="{% url 'home' %}">Trang chủ</a></span> > <span class="current">Liên hệ</span> </div>
+    </section>
+    <br>
+
+    <section class="contact-info">
+        <div class="info-box">
+            <div class="icon">
+                <img src="{% static 'images/f-9.png' %}" alt="Biểu tượng Địa điểm"> </div>
+            <h3>Địa chỉ của chúng tôi</h3> <p>Khu nghỉ dưỡng Paradise, 123 Đường Võ Nguyên Giáp, Phường Mỹ An, Quận Ngũ Hành Sơn, TP. Đà Nẵng, Việt Nam.</p> </div>
+        <div class="info-box">
+            <div class="icon">
+                <img src="{% static 'images/f-10.png' %}" alt="Biểu tượng Điện thoại"> </div>
+            <h3>Gọi cho chúng tôi</h3> <p>+84 236 123 4567</p> </div>
+        <div class="info-box">
+            <div class="icon">
+                <img src="{% static 'images/f-11.png' %}" alt="Biểu tượng Email"> </div>
+            <h3>Viết thư điện tử</h3> <p>lienhe@paradisedanang.vn</p> </div>
+    </section>
+
+    <section class="rooms-section" style="background-color: #f0f8ff; padding: 40px 20px;"> <h2> Khách sạn Paradise Đà Nẵng đang chờ đón bạn!</h2> <p>
+            Gặp gỡ đội ngũ tận tâm của chúng tôi, những người đam mê mang đến dịch vụ vượt trội và đảm bảo kỳ nghỉ của bạn tràn ngập sự ấm áp và thoải mái của Đà Nẵng.
+        </p> <br>
+        <a href="{% url 'about' %}" class="btn" style="background-color: #007bff; max-width: 200px; margin: 0 auto;">Tìm hiểu thêm về chúng tôi</a> </section>
+
+    <div class="contact-form-container">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        <form class="contact-form" method="POST" action="{% url 'contact:contact_us' %}">
+            {% csrf_token %}
+            <div class="form-row">
+                {{ form.name }}  {{ form.email }} </div>
+            <br>
+            {{ form.message }}   <br><br>
+            <button type="submit">Gửi Tin Nhắn</button> <br>
+            <p class="disclaimer">*Chúng tôi cam kết không tiết lộ thông tin cá nhân của bạn cho bên thứ ba.</p> </form>
+    </div>
+
+    {% include 'footer.html' %} </body>
+</html>

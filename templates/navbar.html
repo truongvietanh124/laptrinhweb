@@ -1,0 +1,127 @@
+{% load static %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<nav style="position: fixed; top: 0px; left: 0; right: 0; margin-left: auto; margin-right: auto; display: flex; justify-content: space-between; align-items: center; padding: 0px 30px; background-color: white; z-index: 99; width: calc(100% - 20px); max-width: 1200px; /* Ví dụ max-width */ height: 80px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); border-radius: 0 0 30px 30px; /* Điều chỉnh border-radius nếu muốn full-width bo tròn ở dưới */ top: 10px; /* Thêm khoảng cách từ top nếu cần */">
+    <a href="{% url 'home' %}" style="text-decoration: none; font-size: 24px; font-weight: bold; color: #1a1a2e;">Paradise</a>
+
+    <button style="display: none; font-size: 24px; background: none; border: none; cursor: pointer; color: #333;" class="hamburger" aria-label="Mở/Đóng menu"> <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="menu" style="display: flex; gap: 35px;">
+        <a href="{% url 'home' %}" style="text-decoration: none; color: #333; font-size: 16px; font-weight: 600; transition: color 0.3s ease;">Trang chủ</a>
+        <a href="{% url 'rooms:room_list' %}" style="text-decoration: none; color: #333; font-size: 16px; font-weight: 600; transition: color 0.3s ease;">Phòng nghỉ</a>
+        <a href="{% url 'blog:blog_list' %}" style="text-decoration: none; color: #333; font-size: 16px; font-weight: 600; transition: color 0.3s ease;">Bài viết</a> <a href="{% url 'feedback:feedback_list' %}" style="text-decoration: none; color: #333; font-size: 16px; font-weight: 600; transition: color 0.3s ease;">Phản hồi</a>
+        <a href="{% url 'about' %}" style="text-decoration: none; color: #333; font-size: 16px; font-weight: 600; transition: color 0.3s ease;">Về chúng tôi</a> <a href="{% url 'contact:contact_us' %}" style="text-decoration: none; color: #333; font-size: 16px; font-weight: 600; transition: color 0.3s ease;">Liên hệ</a>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 20px; margin-right: 15px;"> <a href="{% url 'rooms:my_bookings' %}" aria-label="Các đặt phòng của tôi"> <i class="fas fa-shopping-bag" style="font-size: 20px; color: #333; position: relative;">
+                <span style="position: absolute; top: -8px; right: -10px; background-color: #28A745; color: white; font-size: 12px; font-weight: bold; border-radius: 50%; width: 18px; height: 18px; display: flex; justify-content: center; align-items: center;">{{ booking_count }}</span>
+            </i>
+        </a>
+
+        {% if user.is_authenticated %}
+            <a href="{% url 'accounts:profile' %}" aria-label="Trang cá nhân"> <img src="{% if user.profile.profile_picture %}{{ user.profile.profile_picture.url }}{% else %}{% static 'images/profile_placeholder.jpg' %}{% endif %}" alt="Ảnh đại diện" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; cursor: pointer; transition: transform 0.2s ease;">
+            </a>
+        {% else %}
+            <a href="{% url 'accounts:login_page' %}" aria-label="Đăng nhập"> <img src="{% static 'images/profile_placeholder.jpg' %}" alt="Đăng nhập" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; cursor: pointer; transition: transform 0.2s ease;">
+            </a>
+        {% endif %}
+    </div>
+</nav>
+
+<style>
+    /* Hover Effects */
+    nav a:hover {
+        color: #007BFF !important; /* Thêm !important nếu cần để ghi đè style inline */
+    }
+    /* Bỏ nav button:hover vì nút hamburger không có background mặc định */
+    nav img:hover {
+        transform: scale(1.1);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) { /* Tăng breakpoint để menu ẩn sớm hơn nếu cần */
+        .hamburger {
+            display: block !important;
+            margin-right: 15px; /* Thêm khoảng cách cho nút hamburger */
+        }
+        .menu {
+            display: none !important; /* Thêm !important để chắc chắn ẩn */
+            flex-direction: column !important;
+            position: absolute !important;
+            top: 80px !important; /* Điều chỉnh top bằng chiều cao của navbar */
+            left: 0 !important;
+            width: 100% !important;
+            background-color: white !important;
+            padding: 10px 0 !important; /* Điều chỉnh padding */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+            border-radius: 0 0 15px 15px; /* Bo góc cho menu xổ xuống */
+        }
+        .menu.active {
+            display: flex !important;
+        }
+        .menu a {
+            margin: 0 !important; /* Reset margin */
+            padding: 12px 20px !important; /* Thêm padding cho dễ bấm */
+            font-size: 16px !important; /* Điều chỉnh font-size nếu cần */
+            width: 100%; /* Chiếm toàn bộ chiều rộng */
+            box-sizing: border-box; /* Để padding không làm tăng kích thước */
+            text-align: left; /* Căn trái chữ trong menu xổ xuống */
+        }
+        /* Điều chỉnh phần đặt phòng và hồ sơ cho màn hình nhỏ hơn */
+        nav > div:last-child { /* Target .Booking and Profile Section */
+            margin-right: 5px; /* Giảm margin khi màn hình nhỏ */
+        }
+    }
+
+    @media (max-width: 480px) {
+        nav {
+            padding: 0 15px !important; /* Điều chỉnh padding cho nav */
+            height: 70px !important; /* Giảm chiều cao navbar */
+        }
+        body {
+             padding-top: 70px !important; /* Điều chỉnh padding-top của body */
+        }
+        .menu {
+            top: 70px !important; /* Điều chỉnh top cho menu xổ xuống */
+        }
+        nav a.logo-link { /* Giả sử logo là một link với class này */
+            font-size: 20px !important;
+        }
+        .hamburger {
+            font-size: 20px !important;
+        }
+        nav div[style*="gap: 20px"] i { /* Target icon giỏ hàng */
+             font-size: 18px !important;
+        }
+         nav div[style*="gap: 20px"] span { /* Target số lượng đặt phòng */
+            font-size: 10px !important;
+            width: 15px !important;
+            height: 15px !important;
+            top: -6px !important;
+            right: -8px !important;
+        }
+        nav img { /* Ảnh đại diện */
+            width: 35px !important;
+            height: 35px !important;
+        }
+    }
+
+    /* Prevent content overlap */
+    body {
+        padding-top: 90px !important; /* Điều chỉnh dựa trên chiều cao của navbar + top offset */
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const hamburger = document.querySelector('.hamburger');
+        const menu = document.querySelector('.menu');
+
+        if (hamburger && menu) { // Thêm kiểm tra null đề phòng
+            hamburger.addEventListener('click', () => {
+                menu.classList.toggle('active');
+            });
+        }
+    });
+</script>

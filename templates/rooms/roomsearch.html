@@ -1,0 +1,463 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="vi-VN"> <head> <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="profile" href="https://gmpg.org/xfn/11">
+    <link media="all"
+        href="https://kinsley.bslthemes.com/wp-content/cache/autoptimize/1/css/autoptimize_d823bd17a1c5d24cfee8b274429cd504.css"
+        rel="stylesheet">
+    <link media="only screen and (max-width: 768px)"
+        href="https://kinsley.bslthemes.com/wp-content/cache/autoptimize/1/css/autoptimize_41f59b21c4bbf5bf8ff4257643b4a543.css"
+        rel="stylesheet">
+    <title>Kết quả Tìm kiếm Phòng - Khách sạn Paradise Đà Nẵng</title> {% load static %}
+    <meta name="robots" content="max-image-preview:large">
+    <style>
+        img:is([sizes="auto" i], [sizes^="auto," i]) {
+            contain-intrinsic-size: 3000px 1500px
+        }
+        body { /* Thêm font cơ bản hỗ trợ tiếng Việt */
+            font-family: Arial, sans-serif;
+        }
+        /* Style cơ bản cho phần kết quả */
+        .mphb_sc_search_results-info {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            color: #333;
+            padding: 15px;
+            background-color: #e9f5ff;
+            border-left: 5px solid #007bff;
+            border-radius: 4px;
+        }
+        .mphb-recommendation-title {
+            font-size: 1.6em;
+            color: #2c3e50;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+        .mphb-room-type {
+            border: 1px solid #eee;
+            margin-bottom: 25px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .mphb-room-type img {
+             max-width: 100%;
+             height: auto;
+             border-radius: 5px;
+             margin-bottom: 15px;
+        }
+         .mphb-room-type-title a {
+            color: #333;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1.4em;
+         }
+         .mphb-room-type-title a:hover {
+            color: #007bff;
+         }
+         .mphb-view-details-button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 15px;
+            background-color: #6c757d;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.9em;
+            transition: background-color 0.3s;
+         }
+          .mphb-view-details-button:hover {
+             background-color: #5a6268;
+          }
+         .mphb-recommendation { /* Style form đặt phòng nhanh */
+             background-color: #f8f9fa;
+             padding: 20px;
+             border: 1px dashed #ccc;
+             border-radius: 5px;
+         }
+         .mphb-recommendation-details-list {
+             list-style: none;
+             padding: 0;
+             margin-bottom: 15px;
+         }
+         .mphb-recommendation-item {
+             margin-bottom: 10px;
+             padding-bottom: 10px;
+             border-bottom: 1px solid #eee;
+         }
+         .mphb-recommendation-item-link {
+             font-weight: bold;
+             color: #333;
+             text-decoration: none;
+         }
+         .mphb-recommendation-item-guests {
+             font-size: 0.9em;
+             color: #666;
+             display: block;
+         }
+         .mphb-recommendation-total {
+             font-size: 1.2em;
+             font-weight: bold;
+             text-align: right;
+             margin-top: 15px;
+         }
+          .mphb-recommendation-reserve-button {
+             display: block;
+             width: 100%;
+             padding: 12px;
+             font-size: 1.1em;
+             margin-top: 15px;
+             background-color: #28a745;
+             color: white;
+             border: none;
+             border-radius: 5px;
+             cursor: pointer;
+             transition: background-color 0.3s;
+          }
+           .mphb-recommendation-reserve-button:hover {
+              background-color: #218838;
+           }
+          .mphb-regular-price {
+             font-weight: bold;
+             color: #c50000;
+             font-size: 1.1em;
+          }
+          /* Style cho sidebar liên hệ */
+          .elementor-widget-kinsley-contact-info .knsl-icon-box {
+              margin-bottom: 20px;
+          }
+          .elementor-widget-kinsley-contact-info h5 {
+              font-size: 1.1em;
+              margin-bottom: 5px !important; /* Ghi đè margin theme */
+          }
+           .elementor-widget-kinsley-contact-info p {
+              font-size: 0.95em;
+              color: #555;
+           }
+           .wpcf7-form input[type="text"],
+           .wpcf7-form input[type="email"],
+           .wpcf7-form textarea {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 15px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+           }
+           .wpcf7-form .knsl-btn { /* Nút gửi form liên hệ */
+                background-color: #007bff;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+           }
+    </style>
+    <link rel="dns-prefetch" href="//bslthemes.com">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="alternate" type="application/rss+xml" title="Khách sạn Paradise Đà Nẵng » Nguồn tin chính"
+        href="https://kinsley.bslthemes.com/feed/">
+    <link rel="alternate" type="application/rss+xml"
+        title="Khách sạn Paradise Đà Nẵng » Nguồn bình luận"
+        href="https://kinsley.bslthemes.com/comments/feed/">
+    <link rel="stylesheet" id="bslthms-advanced-btns-style-css"
+        href="https://bslthemes.com/bslthms-advanced-btns/assets/style.css" type="text/css" media="all">
+    <link rel="stylesheet" id="mphb-kbwood-datepick-css-css"
+        href="https://kinsley.bslthemes.com/wp-content/cache/autoptimize/1/css/autoptimize_single_c72a62925997a10f520b96d14652edde.css"
+        type="text/css" media="all">
+    <style id="woocommerce-inline-inline-css" type="text/css">
+        .woocommerce form .form-row .required {
+            visibility: visible
+        }
+    </style>
+    <link rel="stylesheet" id="kinsley-primary-fonts-css"
+        href="https://fonts.googleapis.com/css2?family=Jost:wght@200;400;600&amp;display=swap" type="text/css"
+        media="all">
+    <link rel="stylesheet" id="kinsley-secondary-fonts-css"
+        href="https://fonts.googleapis.com/css2?family=Monoton&amp;display=swap" type="text/css" media="all">
+    <link rel="stylesheet" id="elementor-post-5762-css"
+        href="https://kinsley.bslthemes.com/wp-content/cache/autoptimize/1/css/autoptimize_single_54b486a773dc1fff1726e27ba12fa9c9.css"
+        type="text/css" media="all">
+    <link rel="stylesheet" id="elementor-post-8-css"
+        href="https://kinsley.bslthemes.com/wp-content/cache/autoptimize/1/css/autoptimize_single_2fa98dd3bfea6565edc0b22244c4e482.css"
+        type="text/css" media="all">
+    <script type="text/javascript" src="https://kinsley.bslthemes.com/wp-includes/js/jquery/jquery.min.js"
+        id="jquery-core-js"></script>
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://kinsley.bslthemes.com/xmlrpc.php?rsd">
+    <meta name="generator" content="WordPress 6.7.2">
+    <meta name="generator" content="WooCommerce 9.6.0">
+    <link rel="canonical" href="https://kinsley.bslthemes.com/search-results/">
+    <link rel="shortlink" href="https://kinsley.bslthemes.com/?p=8">
+    <link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed"
+        href="https://kinsley.bslthemes.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fkinsley.bslthemes.com%2Fsearch-results%2F">
+    <link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed"
+        href="https://kinsley.bslthemes.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fkinsley.bslthemes.com%2Fsearch-results%2F&amp;format=xml">
+    <meta name="description" content="Kết quả tìm kiếm phòng tại Khách sạn Paradise Đà Nẵng.">
+    <style></style><noscript>
+        <style>
+            .woocommerce-product-gallery {
+                opacity: 1 !important
+            }
+        </style>
+    </noscript>
+    <meta name="generator"
+        content="Elementor 3.27.2; features: e_font_icon_svg, additional_custom_breakpoints; settings: css_print_method-external, google_font-enabled, font_display-auto">
+    <link rel="icon" href="https://kinsley.bslthemes.com/wp-content/uploads/2021/11/cropped-logo-32x32.png"
+        sizes="32x32">
+    <link rel="icon" href="https://kinsley.bslthemes.com/wp-content/uploads/2021/11/cropped-logo-192x192.png"
+        sizes="192x192">
+    <link rel="apple-touch-icon"
+        href="https://kinsley.bslthemes.com/wp-content/uploads/2021/11/cropped-logo-180x180.png">
+    <meta name="msapplication-TileImage"
+        content="https://kinsley.bslthemes.com/wp-content/uploads/2021/11/cropped-logo-270x270.png">
+</head>
+
+<body  class="page-template page-template-template-layout-builder page-template-template-layout-builder-php page page-id-8 theme-kinsley woocommerce-js elementor-default elementor-kit-5762 elementor-page elementor-page-8 e--ua-blink e--ua-edge e--ua-webkit"
+    data-elementor-device-mode="desktop">
+    {% include 'navbar.html' %} <div class="knsl-app">
+
+        <div id="post-8" class="post-8 page type-page status-publish hentry">
+            <div data-elementor-type="wp-page" data-elementor-id="8" class="elementor elementor-8">
+                <section
+                    class="elementor-section elementor-top-section elementor-element elementor-element-6a274430 elementor-section-full_width elementor-section-height-default elementor-section-height-default"
+                    data-id="6a274430" data-element_type="section">
+                    <div class="elementor-container elementor-column-gap-no">
+                        <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-3424460b"
+                            data-id="3424460b" data-element_type="column">
+                            <div class="elementor-widget-wrap elementor-element-populated">
+                                <div class="elementor-element elementor-element-5bb5cd8 elementor-widget elementor-widget-kinsley-intro"
+                                    data-id="5bb5cd8" data-element_type="widget"
+                                    data-widget_type="kinsley-intro.default">
+                                    <div class="elementor-widget-container">
+
+                                        <section class="knsl-banner-simple knsl-transition-bottom">
+                                            <noscript><img decoding="async" src="https://kinsley.bslthemes.com/wp-content/themes/kinsley/assets/img/palm.svg" class="knsl-deco-left" alt="cây cọ trang trí" /></noscript> <img decoding="async" src="https://kinsley.bslthemes.com/wp-content/themes/kinsley/assets/img/palm.svg" data-src="https://kinsley.bslthemes.com/wp-content/themes/kinsley/assets/img/palm.svg" class="knsl-deco-left ls-is-cached lazyloaded" alt="cây cọ trang trí"> <noscript><img decoding="async" src="https://kinsley.bslthemes.com/wp-content/themes/kinsley/assets/img/palm.svg" class="knsl-deco-right" alt="cây cọ trang trí" /></noscript> <img decoding="async" src="https://kinsley.bslthemes.com/wp-content/themes/kinsley/assets/img/palm.svg" data-src="https://kinsley.bslthemes.com/wp-content/themes/kinsley/assets/img/palm.svg" class="knsl-deco-right ls-is-cached lazyloaded" alt="cây cọ trang trí"> <div class="container">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="knsl-center knsl-title-frame">
+                                                            <h1 class="knsl-title--h knsl-mb-20 knsl-h1-inner"> <span>Kết quả Tìm kiếm</span></h1> <ul class="knsl-breadcrumbs">
+                                                                <li><a href="{% url 'home' %}">Trang chủ</a></li> <li class="tst-active"><a>Kết quả Tìm kiếm</a></li> </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section
+                    class="elementor-section elementor-top-section elementor-element elementor-element-b8211f4 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+                    data-id="b8211f4" data-element_type="section" style="padding: 20px 0;"> <div class="elementor-container elementor-column-gap-default">
+
+                        <div class="elementor-column elementor-col-66 elementor-top-column elementor-element elementor-element-6a1fffa"
+                            data-id="6a1fffa" data-element_type="column">
+                            <div class="elementor-widget-wrap elementor-element-populated">
+                                <div class="elementor-element elementor-element-eab6dc5 elementor-widget elementor-widget-kinsley-mphb-search-results"
+                                    data-id="eab6dc5" data-element_type="widget"
+                                    data-widget_type="kinsley-mphb-search-results.default">
+                                    <div class="elementor-widget-container">
+                                        <div class=""> <div
+                                                class="mphb_sc_search_results-wrapper  attr-details-amenity-false attr-details-category-false attr-details-attributes-false attr-details-view-false attr-details-bed-type-false attr-details-children-false">
+                                                <p class="mphb_sc_search_results-info">
+                                                    Tìm thấy <strong style="color: black;">{{ other_available_rooms.count }}</strong> phòng trống
+                                                    từ <strong style="color: black;">{{ check_in|date:"d/m/Y" }}</strong>
+                                                    đến <strong style="color: black;">{{ check_out|date:"d/m/Y" }}</strong>
+                                                </p> <h2 class="mphb-recommendation-title">Phòng này được đề xuất cho {{ selected_room.capacity }} khách</h2> <div class="mphb-room-type post-1943 mphb_room_type type-mphb_room_type status-publish has-post-thumbnail ...">
+                                                    <p class="post-thumbnail mphb-loop-room-thumbnail">
+                                                        <a href="{% url 'rooms:room_detail' selected_room.id %}">
+                                                            {% if selected_room.image %}
+                                                            <img src="{{ selected_room.image.url }}" alt="{{ selected_room.name }}">
+                                                            {% else %}
+                                                            <img src="{% static 'images/placeholder.jpg' %}" alt="Không có hình ảnh"> {% endif %}
+                                                        </a>
+                                                    </p>
+                                                    <h2 class="mphb-room-type-title entry-title" style="display: flex; justify-content: space-between; align-items: center;">
+                                                        <a class="mphb-room-type-title" href="{% url 'rooms:room_detail' selected_room.id %}">{{ selected_room.name }}</a>
+                                                        <div style="font-size: 16px; font-weight: normal; color: #555;">
+                                                            <span>Số khách: {{ selected_room.capacity }}</span> | <span>Kích thước: {{ selected_room.get_size_display }}</span> </div>
+                                                    </h2>
+
+                                                    <p class="mphb-view-details-button-wrapper">
+                                                        <a class="button mphb-view-details-button"
+                                                            href="{% url 'rooms:room_detail' selected_room.id %}">Xem Chi tiết</a> </p>
+                                                </div>
+                                                <form action="{% url 'rooms:room_booking' %}" method="POST"
+                                                    id="mphb-recommendation" class="mphb-recommendation">
+                                                    {% csrf_token %}
+                                                    <input type="hidden" name="room_id" value="{{ selected_room.id }}">
+                                                    <input type="hidden" name="check_in" value="{{ check_in }}">
+                                                    <input type="hidden" name="check_out" value="{{ check_out }}">
+                                                    <input type="hidden" name="adults" value="{{ adults }}">
+                                                    <ul class="mphb-recommendation-details-list">
+                                                        <li>
+                                                            <input name="mphb_rooms_details[{{ selected_room.id }}]" type="hidden" value="1">
+                                                            <div class="mphb-recommendation-item">
+                                                                <span class="mphb-recommedation-item-subtotal">
+                                                                    <span class="mphb-price"><span class="mphb-currency">₫</span>{{ selected_room.price|floatformat:0 }}</span>
+                                                                </span>
+                                                                <span class="mphb-recommendation-item-count">1 × </span>
+                                                                <a href="{% url 'rooms:room_detail' selected_room.id %}" class="mphb-recommendation-item-link" target="_blank"> {{ selected_room.name }} </a>
+                                                                <small class="mphb-recommendation-item-guests">
+                                                                    <span class="mphb-recommendation-item-guests-label">Sức chứa tối đa: </span> <span class="mphb-recommendation-item-adults mphb-adults-4">{{ selected_room.capacity }} khách </span> </small>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                    <p class="mphb-recommendation-total">
+                                                        <span class="mphb-recommendation-total-title">Tổng cộng:</span> <span class="mphb-recommendation-total-value">
+                                                            <span class="mphb-price"><span class="mphb-currency">₫</span>{{ selected_room.price|floatformat:0 }}</span>
+                                                        </span>
+                                                    </p>
+                                                    {% if is_available %}
+                                                    <button class="button mphb-button mphb-recommendation-reserve-button">Đặt phòng này</button> {% else %}
+                                                        {% if capacity_exceeded %}
+                                                            <br> <p style="font-size: 1.1em; font-weight: bold; color: red;">Sức chứa của phòng là {{ selected_room.capacity }} nhưng bạn đã chọn {{ adults }} khách. Vui lòng kiểm tra các phòng khác.</p> {% else %}
+                                                            <p style="font-size: 1.1em; font-weight: bold; color: red;">Rất tiếc, phòng {{ selected_room.name }} đã được đặt trong thời gian này. Vui lòng kiểm tra các phòng khác.</p> {% endif %}
+                                                    {% endif %}
+                                                    <div class="mphb-clear"></div>
+                                                </form>
+
+
+                                               <br> <h2 class="mphb-recommendation-title">Xem các Phòng trống Khác</h2> {% for room in other_available_rooms %}
+                                                <div class="mphb-room-type post-1943 mphb_room_type type-mphb_room_type ...">
+                                                    <p class="post-thumbnail mphb-loop-room-thumbnail">
+                                                        <a href="{% url 'rooms:room_detail' room.id %}">
+                                                            {% if room.image %}
+                                                            <img src="{{ room.image.url }}" alt="{{ room.name }}">
+                                                            {% else %}
+                                                            <img src="{% static 'images/placeholder.jpg' %}" alt="Không có hình ảnh"> {% endif %}
+                                                        </a>
+                                                    </p>
+                                                    <h2 class="mphb-room-type-title entry-title" style="display: flex; justify-content: space-between; align-items: center;">
+                                                         <a class="mphb-room-type-title" href="{% url 'rooms:room_detail' room.id %}">{{ room.name }}</a>
+                                                        <div style="font-size: 16px; font-weight: normal; color: #555;">
+                                                            <span>Số khách: {{ room.capacity }}</span> | <span>Kích thước: {{ room.get_size_display }}</span> </div>
+                                                    </h2>
+                                                    <div class="knsl-text-light knsl-text-sm knsl-mb-20">
+                                                         <p>{{ room.description|truncatewords:30 }}</p> </div>
+                                                    <p class="mphb-regular-price">
+                                                        <span class="mphb-price"><span class="mphb-currency">₫</span>{{ room.price|floatformat:0 }}</span>
+                                                        <span class="mphb-price-period" title="Dựa trên tìm kiếm của bạn">/ đêm</span> </p>
+                                                    <p class="mphb-view-details-button-wrapper">
+                                                        <a class="button mphb-view-details-button"
+                                                            href="{% url 'rooms:room_detail' room.id %}">Xem Chi tiết</a> </p>
+
+                                                </div>
+                                                {% endfor %}
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-30f457e"
+                            data-id="30f457e" data-element_type="column" style="background-color: #f8f9fa; padding: 20px; border-radius: 8px;"> <div class="elementor-widget-wrap elementor-element-populated">
+                                <section class="elementor-section elementor-inner-section ...">
+                                    <div class="elementor-container elementor-column-gap-no">
+                                        <div class="elementor-column ...">
+                                            <div class="elementor-widget-wrap elementor-element-populated">
+                                                <div class="elementor-element elementor-element-86bb542 ...">
+                                                    <div class="elementor-widget-container">
+                                                        <h3 class="elementor-heading-title elementor-size-default" style="color: #333; margin-bottom: 20px;">Bạn có câu hỏi?</h3> </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                                <section class="elementor-section elementor-inner-section ...">
+                                    <div class="elementor-container elementor-column-gap-no">
+                                        <div class="elementor-column ...">
+                                            <div class="elementor-widget-wrap elementor-element-populated">
+                                                <div class="elementor-element elementor-element-d190a28 ...">
+                                                    <div class="elementor-widget-container"> <section>
+                                                            <div id="knsl-triger-1"></div>
+                                                            <div class="container"> <div class="knsl-features-card knsl-features-card-no-lines">
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-lg-12"> <div class="knsl-icon-box">
+                                                                                <img decoding="async" src="https://kinsley.bslthemes.com/wp-content/uploads/2021/12/f-9.png" alt="Địa chỉ" class="knsl-mb-10 ls-is-cached lazyloaded"> <h5 class="knsl-mb-10"> <span> Địa chỉ </span></h5> <p> <span> Khu nghỉ dưỡng Paradise, 123 Đường Võ Nguyên Giáp, Phường Mỹ An, Quận Ngũ Hành Sơn, TP. Đà Nẵng, Việt Nam. </span></p> </div> </div>
+                                                                        <div class="col-12 col-lg-12"> <div class="knsl-icon-box">
+                                                                                <img decoding="async" src="https://kinsley.bslthemes.com/wp-content/uploads/2021/12/f-10.png" alt="Điện thoại" class="knsl-mb-10 ls-is-cached lazyloaded"> <h5 class="knsl-mb-10"> <span> Gọi cho chúng tôi </span></h5> <p> <span>+84 236 123 4567</span> </p> </div> </div>
+                                                                        <div class="col-12 col-lg-12"> <div class="knsl-icon-box">
+                                                                                <img decoding="async" src="https://kinsley.bslthemes.com/wp-content/uploads/2021/12/f-11.png" alt="Email" class="knsl-mb-10 ls-is-cached lazyloaded"> <h5 class="knsl-mb-10"> <span> Gửi thư điện tử </span></h5> <p> <span> lienhe@paradisedanang.vn </span></p> </div> </div>
+                                                                    </div>
+                                                                </div> </div>
+                                                        </section>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                                <section class="elementor-section elementor-inner-section ...">
+                                    <div class="elementor-container elementor-column-gap-no">
+                                        <div class="elementor-column ...">
+                                            <div class="elementor-widget-wrap elementor-element-populated">
+                                                <div class="elementor-element elementor-element-480059c ...">
+                                                    <div class="elementor-widget-container">
+                                                        <h3 class="elementor-heading-title elementor-size-default" style="color: #333; margin-top: 20px; margin-bottom: 15px;">Liên hệ với chúng tôi</h3> </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                                <section class="elementor-section elementor-inner-section ...">
+                                    <div class="elementor-container elementor-column-gap-no">
+                                        <div class="elementor-column ...">
+                                            <div class="elementor-widget-wrap elementor-element-populated">
+                                                <div class="elementor-element elementor-element-cbbfc69 ...">
+                                                    <div class="elementor-widget-container">
+                                                        <section class="knsl-transition-none knsl-p-0-100">
+                                                            <div class="container" style="padding: 0;"> <div class="row">
+                                                                    <div class="col-lg-12">
+                                                                        <div class="knsl-scroll-animation-default">
+                                                                            <div class="wpcf7 no-js" id="wpcf7-f1315-p8-o1" lang="vi" dir="ltr" data-wpcf7-id="1315">
+                                                                                <form action="{% url 'contact:contact_us' %}" method="post" class="wpcf7-form init" aria-label="Form liên hệ" novalidate="novalidate" data-status="init">
+                                                                                    {% csrf_token %}
+                                                                                    <div class="row">
+                                                                                        <div class="col-lg-12"> <span class="wpcf7-form-control-wrap" data-name="cf-name">
+                                                                                                <input size="40" maxlength="400" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="Tên của bạn" value="" type="text" name="name"> </span>
+                                                                                        </div>
+                                                                                        <div class="col-lg-12"> <span class="wpcf7-form-control-wrap" data-name="cf-email">
+                                                                                                <input size="40" maxlength="400" class="wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email" aria-required="true" aria-invalid="false" placeholder="Địa chỉ Email" value="" type="email" name="email"> </span>
+                                                                                        </div>
+                                                                                        <div class="col-lg-12">
+                                                                                            <span class="wpcf7-form-control-wrap" data-name="cf-message">
+                                                                                                <textarea cols="40" rows="5" maxlength="2000" class="wpcf7-form-control wpcf7-textarea" aria-invalid="false" placeholder="Lời nhắn của bạn" name="message"></textarea> </span>
+                                                                                        </div>
+                                                                                        <p class="col-lg-12 knsl-text-sm" style="font-size: 0.8em; color: #777; margin-top: 10px;">
+                                                                                            <small>*Chúng tôi cam kết không tiết lộ thông tin cá nhân của bạn cho bên thứ ba.</small> </p>
+                                                                                        <div class="col-lg-12">
+                                                                                            <div class="knsl-form-submit-frame">
+                                                                                                <button type="submit" class="knsl-btn">Gửi tin nhắn</button> </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    </form>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </section>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                                </div>
+                        </div>
+                        </div>
+                </section>
+                </div>
+        </div>
+        </div> {% include 'footer.html' %} </body>
+
+</html>

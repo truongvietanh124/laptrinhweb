@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="vi"> <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Các Loại Phòng - Khách sạn Paradise Đà Nẵng</title> {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Thêm một vài style cơ bản nếu style.css và styles.css không đủ */
+        body {
+            font-family: Arial, sans-serif; /* Đảm bảo font hỗ trợ tiếng Việt */
+            background-color: #f8f9fc;
+            color: #333;
+            line-height: 1.6;
+        }
+        .rooms-section h1, .rooms-section > p:first-of-type {
+            text-align: center;
+            color: #2c3e50;
+        }
+         .rooms-section h1 {
+             margin-bottom: 15px;
+         }
+        .rooms-section > p:first-of-type {
+            color: #555;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 25px;
+        }
+        .breadcrumb {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+            color: #777;
+        }
+        .breadcrumb a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .breadcrumb .current {
+            color: #333;
+            font-weight: bold;
+        }
+        .filters {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 15px 0;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .filters .filter {
+            margin: 0 12px; /* Tăng khoảng cách */
+            padding: 10px 20px; /* Tăng padding */
+            color: #007bff;
+            text-decoration: none;
+            border-radius: 25px; /* Bo tròn hơn */
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-weight: 500; /* Thêm font weight */
+        }
+        .filters .filter:hover {
+            background-color: #e9ecef;
+            color: #0056b3;
+        }
+        .filters .filter.active {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+        }
+        .room-card { /* Style cho card đã có inline, có thể chuyển vào đây */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Thêm hiệu ứng */
+        }
+        .room-card:hover {
+             transform: translateY(-5px);
+             box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+        .room-card img {
+             /* style inline đã có */
+        }
+        .room-details .info span {
+            margin-right: 15px; /* Tăng khoảng cách */
+            display: inline-block; /* Đảm bảo margin hoạt động */
+            background-color: #f1f1f1; /* Thêm nền nhẹ */
+            padding: 3px 8px; /* Thêm padding */
+            border-radius: 4px; /* Bo góc */
+        }
+         .room-details h3 a:hover {
+            color: #007bff;
+        }
+         .room-details .price span {
+            font-weight: bold; /* In đậm giá */
+         }
+         .no-rooms-message { /* Style cho thông báo không có phòng */
+            grid-column: 1 / -1; /* Chiếm toàn bộ các cột */
+            text-align: center;
+            font-size: 18px;
+            color: #777;
+            padding: 40px 20px; /* Tăng padding */
+         }
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' %} <section class="rooms-section" style="padding-top: 20px;">
+        <h1>Chọn Phòng Nghỉ Hoàn Hảo Cho Bạn</h1> <p>Khám phá các loại phòng đa dạng tại Khu nghỉ dưỡng Paradise Đà Nẵng, mỗi phòng được thiết kế để mang lại sự thoải mái, phong cách và một chút duyên dáng của Đà Nẵng.</p> <div class="breadcrumb">
+            <span><a href="{% url 'home' %}">Trang chủ</a></span> > <span class="current">Phòng nghỉ</span> </div>
+    </section>
+
+    <section class="rooms-section">
+        <div class="filters">
+            <a href="{% url 'rooms:room_list' %}?category=all" class="filter {% if selected_category == 'all' or not selected_category %}active{% endif %}">Tất cả các phòng</a> {% for category in categories %}
+                 <a href="{% url 'rooms:room_list' %}?category={{ category.name|slugify }}" class="filter {% if selected_category == category.name|slugify %}active{% endif %}">{{ category.name }}</a>
+            {% endfor %}
+        </div>
+    </section>
+
+    <div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; max-width: 1200px; margin: 0 auto; padding: 20px;">
+        {% for room in rooms %}
+            <div class="room-card" style="background: #fff; border: 1px solid #eee; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.05); display: flex; flex-direction: column;">
+                <a href="{% url 'rooms:room_detail' room.id %}" style="display: block; height: 250px; overflow: hidden;"> {% if room.image %}
+                        <img src="{{ room.image.url }}" alt="{{ room.name }}" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                    {% else %}
+                        <img src="{% static 'images/placeholder.jpg' %}" alt="Không có hình ảnh" style="width: 100%; height: 100%; object-fit: cover; display: block;"> {% endif %}
+                </a>
+                <div class="room-details" style="padding: 20px; flex-grow: 1; display: flex; flex-direction: column;"> <div class="info" style="font-size: 0.85rem; color: #666; margin-bottom: 10px;">
+                        <span>Số khách: {{ room.capacity }}</span> <span>Kích thước: {{ room.get_size_display }}</span> </div>
+                    <h3 style="margin: 0 0 10px; font-size: 1.4rem; line-height: 1.3;">
+                        <a href="{% url 'rooms:room_detail' room.id %}" style="text-decoration: none; color: #333; font-weight: bold;">{{ room.name }}</a>
+                    </h3>
+                    <p style="margin: 0 0 15px; font-size: 1rem; color: #555; line-height: 1.6; flex-grow: 1;"> {{ room.description|slice:":100" }}...
+                    </p>
+                    <div class="price" style="display: flex; justify-content: space-between; align-items: center; margin-top: auto;"> <span style="font-size: 1.2rem; color: #c50000; font-weight: bold;">₫{{ room.price|floatformat:0 }} / đêm</span>
+                        <a href="{% url 'rooms:room_detail' room.id %}" style="color: #007bff; text-decoration: none; font-weight: bold; font-size: 0.9rem;">Xem chi tiết →</a> </div>
+                </div>
+            </div>
+        {% empty %}
+            <p class="no-rooms-message">Không có phòng nào trong danh mục này.</p> {% endfor %}
+    </div>
+
+    {% include 'footer.html' %} </body>
+</html>
